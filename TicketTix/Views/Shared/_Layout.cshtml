@@ -1,0 +1,87 @@
+﻿@using Microsoft.AspNetCore.Http
+@using TicketTix.Utility
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TicketTix</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootswatchTheme.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/TravelTix.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body class="bg-white d-flex flex-column min-vh-100">
+    
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #239BD8;">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" asp-area="Customer" asp-controller="Home" asp-action="Index">
+                   <img src="/images/assets/logo.png"alt="" style="width:150px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="Customer" asp-controller="Booking" asp-action="Index">Ticket</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="Customer" asp-controller="Cart" asp-action="Index">Booking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">My Order</a>
+                        </li>
+                        @if(User.IsInRole(SD.adm)){
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-togglen text-white" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CMS</a>
+                                    <div class="dropdown-menu" style="">
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Airline" asp-action="Index">Airline</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Ticket" asp-action="Index">Ticket</a>
+                                        <div class="dropdown-divider"></div>
+                                    
+									    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
+                                    </div>
+                             </li>
+                         }
+                    </ul>
+                    <partial name ="_LoginPartial"/>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container pt-3">
+        <main role="main" class="pb-3">
+            <partial name="_Notification" />
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer  class="mt-auto text-white"style="background-color: #239BD8;">
+        <div class="container row">
+            <div class="col-6"></div>
+            <div class="col-6 pt-3 pb-3"> 
+                &copy; 2022 PT TravelTix. All Rights Reserved
+            </div> 
+        </div>   
+    </footer>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/cnfl4gz4stqlj39m6em493hnvod05s4iifi80nyka9dqmfxv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

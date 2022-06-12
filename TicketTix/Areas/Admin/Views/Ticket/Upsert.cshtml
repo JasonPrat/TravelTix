@@ -1,0 +1,93 @@
+﻿@model TicketTix.Models.ViewModels.TicketVM
+
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <input asp-for="ticket.Id"  hidden />
+	<input asp-for="ticket.ImageUrl" hidden />
+    <div class="row">
+        <div class="col-10">
+            <div class="border-info p-3 mt-4 row">
+                <div class="row pt-2">
+                    <h2 class ="text-info">@(Model.ticket.Id!=0?"Update":"Create") Product</h2>
+                </div>
+             <div class="form-group mb-3 col-6">
+                 <label asp-for="ticket.Origin"for="exampleInputEmail1" class="form-label mt-4"></label>
+                 <input asp-for="ticket.Origin"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" >
+                 <span asp-validation-for="ticket.Origin" class="text-danger"></span>
+             </div>
+             <div class="form-group mb-3 col-6">
+                 <label asp-for="ticket.Destination"for="exampleInputEmail1" class="form-label mt-4"></label>
+                 <input asp-for="ticket.Destination"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" >
+                 <span asp-validation-for="ticket.Destination" class="text-danger"></span>
+             </div>
+             <div class="form-group mb-3 col-6">
+                 <label asp-for="ticket.Departure"for="exampleInputEmail1" class="form-label mt-4"></label>
+                 <input asp-for="ticket.Departure"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" >
+                 <span asp-validation-for="ticket.Departure" class="text-danger"></span>
+             </div>
+             <div class="form-group mb-3 col-6">
+                 <label asp-for="ticket.Arrival"for="exampleInputEmail1" class="form-label mt-4"></label>
+                 <input asp-for="ticket.Arrival"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Value" >
+                 <span asp-validation-for="ticket.Arrival" class="text-danger"></span>
+             </div>
+             
+             <div class="form-group mb-3">
+                 <label asp-for="ticket.price"for="exampleInputEmail1" class="form-label mt-4"></label>
+                 <input asp-for="ticket.price"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Value" >
+                 <span asp-validation-for="ticket.price" class="text-danger"></span>
+             
+             <div class="form-group mb-3">
+                 <label asp-for="ticket.ImageUrl"for="exampleInputEmail1" class="form-label mt-4"></label>
+                 <input type ="file" class="form-control" id="uploadBox" name="file" aria-describedby="emailHelp" placeholder="Enter Value" >
+         
+             </div>
+             
+             <div class="form-group mb-3 ">
+                 <label asp-for="ticket.AirlineId"for="exampleInputEmail1" class="form-label mt-4"></label>
+                 <select asp-for="ticket.AirlineId" asp-items="@Model.AirlineList" class="form-select" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Value" >
+                    <option disabled selected>--Select Airline--</option>
+                 </select>
+                     <span asp-validation-for="ticket.AirlineId" class="text-danger"></span>
+             </div>
+             </div>
+             <div class=col-12>
+                 @if (Model.ticket.Id != 0)
+                {
+                    <button  type="submit" class="btn btn-outline-primary" style="width: 150px">Update</button>
+                }
+                else
+                {
+                    <button  type="submit" onclick ="return ValidateInput()"class="btn btn-outline-primary" style="width: 150px">Create</button>
+                }
+        
+                <a  asp-controller="Ticket" asp-action="Index" class="btn btn-outline-info" style ="width 150px">Back To List</a>
+    
+             </div>
+        </div>
+        <div class="col-2">
+            <img src="@Model.ticket.ImageUrl" width="100%" style="border-radius:5px; border:2px solid #bbb9b9" />
+        </div>
+     </div>
+     </div>
+</form>
+@section Scripts{
+    @{
+         <partial name="_ValidationScriptsPartial" />
+
+    }
+
+    <script>
+        function ValidateInput(){
+            if(document.getElementById("uploadBox").value==""){
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Please Upload an Image!',
+                });
+                return false;
+            }
+            return true;
+        }
+    </script>
+}
+

@@ -1,0 +1,12 @@
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\bin\Debug\net6.0\TicketTix.Utility.deps.json
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\bin\Debug\net6.0\TicketTix.Utility.dll
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\bin\Debug\net6.0\TicketTix.Utility.pdb
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\TicketTix.Utility.csproj.AssemblyReference.cache
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\TicketTix.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\TicketTix.Utility.AssemblyInfoInputs.cache
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\TicketTix.Utility.AssemblyInfo.cs
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\TicketTix.Utility.csproj.CoreCompileInputs.cache
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\TicketTix.Utility.dll
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\refint\TicketTix.Utility.dll
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\TicketTix.Utility.pdb
+C:\Binus\semester 4\se\TicketTix\TicketTix.Utility\obj\Debug\net6.0\ref\TicketTix.Utility.dll

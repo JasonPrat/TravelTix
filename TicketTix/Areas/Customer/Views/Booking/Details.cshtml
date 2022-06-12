@@ -1,0 +1,54 @@
+﻿@model TravelTix.Models.Cart
+<form method="post">
+   <input hidden asp-for="TicketId" />
+        <div class="card  container pt-1 bg-light">
+            <div class="card-header text-light row "style="background-color: #239BD8;">
+                <div class="col-12 col-md-6">
+                    <h1 class="text-white">@Model.ticket.Airline.Name</h1>
+                    <p class="text-white">Departure :@Model.ticket.Departure.ToString("dd/MM/yyyy HH:mm")</p>
+                    <p class="text-white">Arrival :@Model.ticket.Arrival.ToString("dd/MM/yyyy HH:mm")</p>
+                </div>
+                
+            </div>
+            <div class="card-body row container">
+                <div class="container rounded p-2 bg-light">
+                    <div class="row bg-light">
+                        <div class="col-1 col-lg-3 offset-lg-1 ">
+                                <img src="@Model.ticket.ImageUrl" width="100%"  class="rounded" />
+                          </div>
+                        <div class="col-8 col-md-8">
+                            
+                            <div class="row pl-2">
+                                <h5 class="text-dark">Destination : @Model.ticket.Destination</h5>
+                                <h5 class="text-dark">Origin : @Model.ticket.Origin</h5>
+                            </div>
+                            <div class="row pl-2">
+                                <h5 class="text-dark pb-2">Price: <b>Rp. @Model.ticket.price.ToString("N")</b></h5>
+                            </div>
+
+                            
+                            <div class="row pl-2">
+                                <p class="text-dark">Maximum Luggage: 25 Kg</p>
+                                <p class="text-dark">Maximum Handcarry: 8 Kg</p>
+                            </div>
+                            <div class="row pl-2">
+                                <div class="col-3 text-primary"><h4>Person</h4></div>
+                                <div class="col-9"><input asp-for="person"  class="form-control"  /></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <div class="row">
+                    <div class="col-12 col-md-6 pb-5">
+                        <a class=" btn btn-outline-warning  form-control " style="height:50px;" asp-action="Index">Back to Booking page</a>
+                    </div>
+                    <div class="col-12 col-md-6 pb-5">
+                        <button type="submit" value="Add to Cart" class="btn btn-outline-success  form-control" style="height:50px;"> Continue Booking <i class="bi bi-arrow-right-circle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>

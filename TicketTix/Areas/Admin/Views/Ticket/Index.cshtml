@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Ticket>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Ticket List</h2>
+            </div>
+       
+    </div>
+</div>
+<div class="col-12">
+<table id="ticket"class= "table table-hover"style="width:100%">
+    <thead>
+        <tr class= "table-info">
+            <th scope="col">
+                Airlines Name
+            </th>
+            <th scope="col">
+                Departure Time
+            </th>
+            <th scope="col">
+                Arrival Time
+            </th>
+            <th scope="col">
+               Price (in Rupiah) 
+            </th>
+            <th scope="col">
+               
+            </th>
+            
+        </tr>
+    </thead>
+</table>
+</div>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-9"></div>
+        <div class="col-3 text-end">
+            <a asp-controller="Ticket" asp-action="Upsert" class="btn btn-outline-primary"> 
+                Add New Schedule
+                <i class="bi bi-plus"> </i>
+                </a>
+            
+        </div>
+       
+    </div>
+</div>
+@section Scripts{
+    <script src="/js/ticket.js"></script>
+}

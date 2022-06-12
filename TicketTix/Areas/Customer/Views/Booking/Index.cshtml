@@ -1,0 +1,108 @@
+﻿@model IEnumerable<TicketTix.Models.Ticket>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Ticket List</h2>
+            </div>
+       
+    </div>
+</div>
+ @using (Html.BeginForm("Index","Booking",FormMethod.Get)){
+     <div class="row">
+         <div class="col-4 pb-3">
+             <h5 class="text-primary"> Search Destination </h5>
+         </div>
+         <div class="col-8 pb-3">
+             <h5 class="text-primary"> Select Date </h5>
+         </div>
+     </div>
+     <div class="row">
+         <div class="col-4 d-flex pb-3">
+            @Html.TextBox("Destination","Enter Your Destination",new{@class="form-control"})<button class="form-control btn btn-primary my-2 my-sm-0 me-sm-1" type="submit"  style="width:55px"><i class="bi bi-search"></i></button>
+         </div>
+         <div class="col-8 d-flex pb-3">
+             @Html.TextBox("Departure","dd/MM/yyyy",new{@class="form-control datepicker"}) <button class="form-control btn btn-primary my-2 my-sm-0 me-sm-1" type="submit"  style="width:55px"><i class="bi bi-search"></i></button>
+         </div>
+     </div>
+     
+ }
+ <div class="col-12">
+<table class= "table "style="width:100%;">
+    <thead >
+        <tr class="text-white"style="background-color: #239BD8;" >
+            <th scope="col">
+                Airline
+            </th>
+            <th scope="col">
+                Departure
+            </th>
+            <th scope="col">
+                Arrival
+            </th>
+            <th scope="col">
+                Origin
+            </th>
+            <th scope="col">
+                Destination
+            </th>
+            <th scope="col">
+                Price
+            </th>
+            <th scope="col">
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr class="table-danger">
+                    <td width="10%"class="text-white"> No results</td>
+                    <td width="20%"> </td>
+                    <td width="20%"> </td>
+                    <td width="10%"> </td>
+                    <td width="10%"> </td>
+                    <td width="20%"> </td>
+                    <td width="10%"> </td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var obj in Model)
+                {
+                    <tr class="table-white" style ="border :1px solid #008cba; border-radius: 5px;">
+                        <td width="10%">
+                            <img src="@obj.ImageUrl" class="img-fluid img-thumbnail card-img-top rounded" style="width:50px"/>
+                        </td>
+                        <td width="20%">
+                            @obj.Departure.ToString("dd/MM/yyyy HH:mm")
+                        </td>
+                        <td width="20%">
+                            @obj.Arrival.ToString("dd/MM/yyyy HH:mm")
+                        </td>
+                        <td width="10%">
+                            @obj.Origin
+                        </td>
+                        <td width="10%">
+                            @obj.Destination
+                        </td>
+                        <td width="20%">
+                            Rp. @obj.price.ToString("N")
+                        </td>
+                        <td width="10%">
+                            <div class="w-60 btn-group " role="group">
+                               <a asp-controller="Booking" asp-action="Details" asp-route-ticketId="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil"></i> Details</a>
+                       
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            
+    </tbody>
+</table>
+</div>
+
+
+
+ 
